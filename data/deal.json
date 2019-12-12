@@ -1,0 +1,347 @@
+{
+    "portalId": 6827351,
+    "objectType": "DEAL",
+    "objectTypeId": "0-3",
+    "objectId": 1261584874,
+    "properties": {
+      "hs_closed_amount_in_home_currency": {
+        "versions": [
+          {
+            "name": "hs_closed_amount_in_home_currency",
+            "value": "0",
+            "timestamp": 1575892180796,
+            "source": "CALCULATED",
+            "sourceVid": [],
+            "sourceMetadata": ""
+          }
+        ],
+        "value": "0",
+        "timestamp": 1575892180796,
+        "source": "CALCULATED",
+        "sourceId": null
+      },
+      "dealname": {
+        "versions": [
+          {
+            "name": "dealname",
+            "value": "Test Deal 02",
+            "timestamp": 1575892180796,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "Test Deal 02",
+        "timestamp": 1575892180796,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "closedate": {
+        "versions": [
+          {
+            "name": "closedate",
+            "value": "1577792961127",
+            "timestamp": 1575892180796,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "1577792961127",
+        "timestamp": 1575892180796,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "num_associated_contacts": {
+        "versions": [
+          {
+            "name": "num_associated_contacts",
+            "value": "0",
+            "timestamp": 1575892181182,
+            "sourceId": "RollupProperties",
+            "source": "CALCULATED",
+            "sourceVid": []
+          }
+        ],
+        "value": "0",
+        "timestamp": 1575892181182,
+        "source": "CALCULATED",
+        "sourceId": "RollupProperties"
+      },
+      "createdate": {
+        "versions": [
+          {
+            "name": "createdate",
+            "value": "1575892161127",
+            "timestamp": 1575892180796,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "1575892161127",
+        "timestamp": 1575892180796,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "hs_is_closed": {
+        "versions": [
+          {
+            "name": "hs_is_closed",
+            "value": "false",
+            "timestamp": 1575892180796,
+            "source": "CALCULATED",
+            "sourceVid": [],
+            "sourceMetadata": ""
+          }
+        ],
+        "value": "false",
+        "timestamp": 1575892180796,
+        "source": "CALCULATED",
+        "sourceId": null
+      },
+      "days_to_close": {
+        "versions": [
+          {
+            "name": "days_to_close",
+            "value": "22",
+            "timestamp": 1575892180796,
+            "source": "CALCULATED",
+            "sourceVid": [],
+            "sourceMetadata": ""
+          }
+        ],
+        "value": "22",
+        "timestamp": 1575892180796,
+        "source": "CALCULATED",
+        "sourceId": null
+      },
+      "hs_deal_stage_probability": {
+        "versions": [
+          {
+            "name": "hs_deal_stage_probability",
+            "value": "0.200000000000000011102230246251565404236316680908203125",
+            "timestamp": 1575892180796,
+            "source": "CALCULATED",
+            "sourceVid": [],
+            "sourceMetadata": ""
+          }
+        ],
+        "value": "0.200000000000000011102230246251565404236316680908203125",
+        "timestamp": 1575892180796,
+        "source": "CALCULATED",
+        "sourceId": null
+      },
+      "pipeline": {
+        "versions": [
+          {
+            "name": "pipeline",
+            "value": "default",
+            "timestamp": 1575892180796,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "default",
+        "timestamp": 1575892180796,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "hs_closed_amount": {
+        "versions": [
+          {
+            "name": "hs_closed_amount",
+            "value": "0",
+            "timestamp": 1575892180796,
+            "source": "CALCULATED",
+            "sourceVid": [],
+            "sourceMetadata": ""
+          }
+        ],
+        "value": "0",
+        "timestamp": 1575892180796,
+        "source": "CALCULATED",
+        "sourceId": null
+      },
+      "hubspot_owner_id": {
+        "versions": [
+          {
+            "name": "hubspot_owner_id",
+            "value": "40940536",
+            "timestamp": 1575892180796,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "40940536",
+        "timestamp": 1575892180796,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "product_type": {
+        "versions": [
+          {
+            "name": "product_type",
+            "value":  "Tenant App;Responsive Repairs/Voids",
+            "timestamp": 1575892649901,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value":  "Tenant App;Responsive Repairs/Voids",
+        "timestamp": 1575892649901,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "hs_lastmodifieddate": {
+        "versions": [
+          {
+            "name": "hs_lastmodifieddate",
+            "value": "1575892687124",
+            "timestamp": 1575892687124,
+            "sourceId": "CRM_UI",
+            "source": "CALCULATED",
+            "sourceVid": []
+          }
+        ],
+        "value": "1575892687124",
+        "timestamp": 1575892687124,
+        "source": "CALCULATED",
+        "sourceId": "CRM_UI"
+      },
+      "hubspot_owner_assigneddate": {
+        "versions": [
+          {
+            "name": "hubspot_owner_assigneddate",
+            "value": "1575892180796",
+            "timestamp": 1575892180796,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "1575892180796",
+        "timestamp": 1575892180796,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "dealstage": {
+        "versions": [
+          {
+            "name": "dealstage",
+            "value": "appointmentscheduled",
+            "timestamp": 1575892180796,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "appointmentscheduled",
+        "timestamp": 1575892180796,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "hs_created_by_user_id": {
+        "versions": [
+          {
+            "name": "hs_created_by_user_id",
+            "value": "797952",
+            "timestamp": 1575892180796,
+            "sourceId": "CRM_UI",
+            "source": "CONTACTS",
+            "sourceVid": []
+          }
+        ],
+        "value": "797952",
+        "timestamp": 1575892180796,
+        "source": "CONTACTS",
+        "sourceId": "CRM_UI"
+      },
+      "hs_createdate": {
+        "versions": [
+          {
+            "name": "hs_createdate",
+            "value": "1575892180796",
+            "timestamp": 1575892180796,
+            "sourceId": "CRM_UI",
+            "source": "CONTACTS",
+            "sourceVid": []
+          }
+        ],
+        "value": "1575892180796",
+        "timestamp": 1575892180796,
+        "source": "CONTACTS",
+        "sourceId": "CRM_UI"
+      },
+      "hs_object_id": {
+        "versions": [
+          {
+            "name": "hs_object_id",
+            "value": "1261584874",
+            "timestamp": 1575892180796,
+            "sourceId": "CRM_UI",
+            "source": "CONTACTS",
+            "sourceVid": []
+          }
+        ],
+        "value": "1261584874",
+        "timestamp": 1575892180796,
+        "source": "CONTACTS",
+        "sourceId": "CRM_UI"
+      },
+      "power": {
+        "versions": [
+          {
+            "name": "power",
+            "value": "6000",
+            "timestamp": 1575892687124,
+            "sourceId": "archie.makuwa@struto.co.uk",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "6000",
+        "timestamp": 1575892687124,
+        "source": "CRM_UI",
+        "sourceId": "archie.makuwa@struto.co.uk"
+      },
+      "hs_all_owner_ids": {
+        "versions": [
+          {
+            "name": "hs_all_owner_ids",
+            "value": "40940536",
+            "timestamp": 1575892182378,
+            "sourceId": "PermissionsUpdater",
+            "source": "CRM_UI",
+            "sourceVid": []
+          }
+        ],
+        "value": "40940536",
+        "timestamp": 1575892182378,
+        "source": "CRM_UI",
+        "sourceId": "PermissionsUpdater"
+      },
+      "hs_updated_by_user_id": {
+        "versions": [
+          {
+            "name": "hs_updated_by_user_id",
+            "value": "797952",
+            "timestamp": 1575892180796,
+            "sourceId": "CRM_UI",
+            "source": "CONTACTS",
+            "sourceVid": []
+          }
+        ],
+        "value": "797952",
+        "timestamp": 1575892180796,
+        "source": "CONTACTS",
+        "sourceId": "CRM_UI"
+      }
+    },
+    "version": 8,
+    "secondaryIdentifier": null,
+    "isDeleted": false
+}
