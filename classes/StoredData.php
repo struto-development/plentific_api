@@ -56,13 +56,6 @@ class StoredData extends Authenticate {
 		//$response = json_decode($response, true);
 		return $response;
 
-		// Check for JSON validity
-		/*
-		if ($response === NULL && !isset($response['vid'])) {
-			echo "Invalid JSON provided";
-			return;
-		}
-		*/
 
 	}
 

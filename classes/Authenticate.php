@@ -1,7 +1,11 @@
 <?php 
+/**
+ * Authentication / oAuth 
+ * @author Anders G
+ * 
+ */
 
 class Authenticate {
-
 
 	/**
 	 * Get stashed secret key 
@@ -11,7 +15,6 @@ class Authenticate {
 
 
 	}
-
 
 
 	/**
