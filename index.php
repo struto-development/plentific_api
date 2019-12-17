@@ -75,11 +75,6 @@ $selected_services_list = ( isset($json_obj['properties']['product_type']['value
 $selected_services = explode(";", $selected_services_list);
 
 
-echo '<pre>';
-var_dump($selected_services);
-echo '</pre>';
-
-
 /**
  * Get pricing rate details from HubDB object (per property fee and min fee)
  * @author Archie M
@@ -92,10 +87,6 @@ foreach($onboarding_fees_obj as $onboarding){
         //foreach ($onboarding as $onboarding_details) {   
         foreach ($onboarding as $onboarding_details => $val) {
 
-            echo '<pre>';
-            //var_dump($val);
-            echo '</pre>';
-
             // init range cars
             $range_small_onboarding = '';
             $range_big_onboarding = '';
@@ -104,31 +95,24 @@ foreach($onboarding_fees_obj as $onboarding){
             // remove dash and replace with commas
             $num_of_properties_range_onboarding = str_replace(" - ", ",", $num_of_properties_onboarding);
 
-
-
             // split into two variables
             $range_explode_onboarding = explode(',', $num_of_properties_range_onboarding);
-            var_dump($range_explode_onboarding);
-
-            //if( array_key_exists($range_small_onboarding, $range_explode_onboarding) ){
+            if( isset($range_explode_onboarding[1]) ) {
                 $range_small_onboarding = round($range_explode_onboarding[0]);
-                $range_big_onboarding = round($range_explode_onboarding[1]);
-            //}
-            
+                $range_big_onboarding = round($range_explode_onboarding[1]); 
+            } else {
+                $range_small_onboarding = round($range_explode_onboarding[0]);
+                $range_big_onboarding = null; 
+            }
+                
             // conditionally determine  if in range
-            switch(true) {
-                case ($number_of_properties, range($range_small_onboarding,$range_big_onboarding): 
-                    $per_property_fee = $val['values'][3];
-                    $minimum_fee = $val['values'][4];
-                    break;
-            
-                // if not in range, we assume it's max
-                /*
-                default:                        
-                    $per_property_fee = '20000';
-                    $minimum_fee = '25000';
-                    break;
-                */
+            if( ( round($range_small_onboarding) <= round($number_of_properties)) && (round($range_big_onboarding) <= round($number_of_properties)) ) {
+                $onboarding_per_property_fee = $val['values'][3];
+                $onboarding_minimum_fee = $val['values'][4]; 
+            } elseif( (round($range_small_onboarding) < round($number_of_properties)) && (round($range_big_onboarding) < round($number_of_properties)) ) {
+                // set static values :-(
+                $onboarding_per_property_fee = '20000';
+                $onboarding_minimum_fee = '25000';
             }
 
         }
@@ -151,32 +135,7 @@ foreach($pricing_rates_obj as $pricing_rates) {
 
             // init cost vars based on service costs (checks to see if service is selected)
             $num_of_properties = $val['values'][1];
-            $responsive_repairs = $val['values'][2];
-            $tenant_app = '';
-            $compliance = '';
-            $ooh = '';
-            $emergency = ''; 
             
-        
-            // check if selected services exists in the array and return matching values if exists
-            if( preg_grep('/^Tenant\s.*/', $selected_services) ) {
-                $tenant_app = $val['values'][3];
-            }
-            if( preg_grep('/^Compliance\s.*/', $selected_services) ) {
-                $compliance = $val['values'][4];
-            }
-            if( preg_grep('/^Ooh\s.*/', $selected_services) ) {
-                $ooh = $val['values'][5];
-            }
-            if( preg_grep('/^Emergency\s.*/', $selected_services) ) {
-                $emergency = $val['values'][6];
-            }   
-            /*
-            if (array_key_exists($val, $selected_services)) {
-                //echo $value['label'] . ' is complete<br>';
-                echo "test";
-            }
-            */
             
             // remove dash and replace with comma
             $num_of_properties_range = str_replace(" - ", ",", $num_of_properties);
@@ -186,34 +145,23 @@ foreach($pricing_rates_obj as $pricing_rates) {
             $range_small = round($range_explode[0]);
             $range_big = round($range_explode[1]);
 
-
-
             // conditionally determine if in range
             switch(true) {
                 case in_array($number_of_properties, range($range_small,$range_big)): 
-                        
-                    $range_small = round($range_explode[0]);
-                    $range_big = round($range_explode[1]);
-                    /*
-                    echo "Properties " . $number_of_properties . '<br>';
-                    echo $responsive_repairs . '<br>';
-                    echo $tenant_app . '<br>';
-                    echo $compliance . '<br>';
-                    echo $ooh  . '<br>';
-                    echo $emergency  . '<br>';
-                    */ 
-
+                    $current_range_small = round($range_explode[0]);
+                    $current_range_big = round($range_explode[1]);
+                    
+                    $responsive_repairs_val = $val['values'][2];
+                    $tenant_app_val = $val['values'][3];
+                    $compliance_val = $val['values'][4];
+                    $ooh_val = $val['values'][5];
+                    $emergency_val = $val['values'][6]; 
                     break;
             
-                // if not in range, we assume it's max    
+                // everything else here is in range, else null    
                 default:    
-                    $responsive_repairs = '0.56';
-                    $tenant_app = '0.3';
-                    $compliance = '0.5';
-                    $ooh = '0';
-                    $emergency = '0.5';
-                    //$myLastElement = array_key_last ( $number_of_properties );
-                    //echo $myLastElement;
+                    $range_small = null;
+                    $range_big = null;
                     break;
 
             }
@@ -225,57 +173,53 @@ foreach($pricing_rates_obj as $pricing_rates) {
 }
 
 
+
 /**
- * DELETE /// DELETE /// DELETE
- * Test data dump
+ * Validate variables and determine costs 
+ * @author Archie M
+ * 
  */
-echo '<br><br>';
-echo '<h1>Calculations</h1>';
-echo "Deal Id: " . $deal_id . '<br>';
-echo "Number of properties: " . $number_of_properties . '<br>';
-echo "Selected services: " . $selected_services_list .'<br>';
 
-echo '<br><br>';
+if( preg_grep('/^Responsive\s.*/', $selected_services) ) {
+    $responsive_repairs = $responsive_repairs_val;
+} else {
+    $responsive_repairs = null;
+}
 
-echo "Property Range Min: " . $minimum_fee .'<br>';
-echo "Property Range Max: " . $per_property_fee .'<br>';
+if( preg_grep('/^Tenant\s.*/', $selected_services) ) {
+    $tenant_app = $tenant_app_val;        
+} else {
+    $tenant_app = null;
+}
 
-echo '<br><br>';
+if( preg_grep('/^Compliance\s.*/', $selected_services) ) {
+    $compliance = $compliance_val;
+} else {
+    $compliance = null;
+}
 
-echo "Current Min Fee: " . $range_small_onboarding .'<br>';
-echo "Current Max Fee: " . $range_big_onboarding .'<br>';
+if( preg_grep('/^OOH\s.*/', $selected_services) ) {
+    $ooh = $ooh_val;
+} else {
+    $ooh = null;
+}
 
-echo '<br><br>';
-
-
-echo '';
-
-echo   $tenant_app .'<br>';
-echo    $compliance . '<br>';
- echo   $ooh . '<br>';
- echo $emergency . '<br>';
-
-echo '<br>'. '____' . '<br><br>';
-
-echo "Per Property fee: " . $per_property_fee;
-
-echo "Determined services fees: " . '<br>';
-//calculate_onboarding_fee($number_of_properties);
+if( preg_grep('/^Emergency\s.*/', $selected_services) ) {
+    $emergency = $emergency_val;
+} else {
+    $emergency = null;
+}  
 
 
-echo '<br>'. '____' . '<br><br>';
 
+/**
+ * Calculate the costs (monthly fee and set up fee)
+ * @author Archie M
+ * 
+ */
 
-//echo "Determined onboarding fee: " . calculate_onboarding_fee($number_of_properties);
-
-
-echo '<br>'. '____' . '<br><br>';
-
-
-echo '<pre>';
-//var_dump($json_obj);
-//var_dump($onboarding_fees_obj);
-//var_dump($onboarding_fees_srt);
+ $set_up_fee = '';
+ $monthly_fee = '';
 
 
 
@@ -292,3 +236,36 @@ function update_deal($deal_id) {
 
 }
 
+
+
+
+
+/**
+ * DELETE /// DELETE /// DELETE
+ * Test data dump
+ */
+echo '<br><br>';
+echo '<h1>Calculations</h1>';
+echo "Deal Id: " . $deal_id . '<br>';
+echo "Number of properties: " . $number_of_properties . '<br>';
+echo "Selected services: " . $selected_services_list .'<br>';
+
+echo '<br><br>';
+
+echo "Onboarding Minimum Fee: " . $onboarding_minimum_fee .'<br>';
+echo "Onboarding Cost Per Property: " . $onboarding_per_property_fee .'<br>';
+
+echo '<br><br>';
+
+echo "Current Pricing Range Min: " . $current_range_small .'<br>';
+echo "Current Pricing Range Max: " . $current_range_big .'<br>';
+
+echo '<br><br>';
+
+echo "Responsive " . $responsive_repairs . '<br>';
+echo  "Tenant " . $tenant_app .'<br>';
+echo "Compliance " . $compliance . '<br>';
+echo  "Ooh " . $ooh . '<br>';
+echo "Emergency " . $emergency . '<br>';
+
+echo '<br>'. '____' . '<br><br>';

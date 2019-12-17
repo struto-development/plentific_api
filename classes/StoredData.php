@@ -56,7 +56,6 @@ class StoredData extends Authenticate {
 		//$response = json_decode($response, true);
 		return $response;
 
-
 	}
 
 
@@ -118,12 +117,12 @@ class StoredData extends Authenticate {
 
 	/**
 	 * Get posted deal details
+	 * 
 	 */
 	public function get_deal_details($deal_id) {
 
 		// Temp credentials 
 		$apiKey = '599f031c-64c2-45cf-80d1-a1eecbf2bccd';
-
 
 		$endPoint = "https://api.hubapi.com/deals/v1/deal/";
 		$queryString = $deal_id."?hapikey=".$apiKey;
@@ -133,51 +132,6 @@ class StoredData extends Authenticate {
             //'Authorization: Bearer '.$accessToken
 		);
 
-
-
 	}
-
-
-	/**
-	 * Get selected services 
-	 * @author Archie M
-	 * 
-	 */
-	function get_selected_services() {
-
-
-		
-	}
-
-
-    
-}
-
-
-
-/**
- * Example function
- * 
- * 
- */
-/*
-function test(){
-
-	echo "Function called";
-
-}
-
-$a = 1;
-switch($a)
-{
- 
-case 2:
-	echo "Its in 2";
-break;
-case 1:
-	echo "Its in 1";
-	test();
-break;
  
 }
-*/
