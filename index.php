@@ -43,7 +43,7 @@ $pricing_rates_srt = $tables_data->get_price_rates();
 
 // Convert to associative array
 $onboarding_fees_obj = json_decode($onboarding_fees_srt, true); /* json_decode($onboarding_fees_srt, true); */
-$pricing_rates_obj = json_decode($pricing_rates_srt,true); 
+$pricing_rates_obj = json_decode($pricing_rates_srt, true); 
 //$pricing_rates_obj = json_decode(json_encode($pricing_rates_srt),true); 
 
 
@@ -80,7 +80,7 @@ $selected_services = explode(";", $selected_services_list);
  * @author Archie M
  * 
  */
-foreach($onboarding_fees_obj as $onboarding){
+foreach($onboarding_fees_obj as $onboarding ){
 
     if( is_array($onboarding) || is_object($onboarding) ) {
 
@@ -127,15 +127,24 @@ foreach($onboarding_fees_obj as $onboarding){
  * Get pricing rate details from HubDB object
  * @author Archie M
  */
-foreach($pricing_rates_obj as $pricing_rates) {
+foreach($pricing_rates_obj as $pricing_rates ) {
+
+    //
+    //echo "Testing " . $val['values'][1];
+    /*
+    $responsive_repairs_val = $pricing_rates['values'][2];
+    $tenant_app_val = $pricing_rates['values'][3];
+    $compliance_val = $pricing_rates['values'][4];
+    $ooh_val = $pricing_rates['values'][5];
+    $emergency_val = $pricing_rates['values'][6]; 
+    */
 
     if( is_array($pricing_rates) || is_object($pricing_rates) ) {
-
+        
         foreach ($pricing_rates as $pricing_rate_details => $val) {
 
             // init cost vars based on service costs (checks to see if service is selected)
             $num_of_properties = $val['values'][1];
-            
             
             // remove dash and replace with comma
             $num_of_properties_range = str_replace(" - ", ",", $num_of_properties);
@@ -145,7 +154,70 @@ foreach($pricing_rates_obj as $pricing_rates) {
             $range_small = round($range_explode[0]);
             $range_big = round($range_explode[1]);
 
+            // push max value into the array ???
+            array_push($val['values'],$range_explode[1]);
+    
+
+            // test
+            $max_value = (int)$val['values'][7];                 // get value and covert to string
+            $max_properties = (int)$number_of_properties;
+
+            if( $max_value <= $max_properties ) {
+                
+                echo "less" . '<br>';
+                echo "properties " . $number_of_properties .'<br>';
+                echo "max value " . $max_value;
+
+                // if conditions are met, assign vars
+                $responsive_repairs_val = $val['values'][2];
+                $tenant_app_val = $val['values'][3];
+                $compliance_val = $val['values'][4];
+                $ooh_val = $val['values'][5];
+                $emergency_val = $val['values'][6];
+
+
+            } else {
+                
+                
+                
+                //echo "more";
+            }
+
+
+
+
+            // calculate
+            if($max_properties < 2500) {
+
+                echo "Less than 2500";
+
+            }
+
+
+
+
+
+            echo '<pre>';
+            //var_dump($val);
+            //var_dump($test_array);
+            echo '</pre>';
+
+            //echo $num_of_properties_range . "??????" . '<br>';
+            //echo $range_small;
+
+
+            // check to see if the array falls into range
+
+            /*
+            $responsive_repairs_val = $val['values'][2];
+            $tenant_app_val = $val['values'][3];
+            $compliance_val = $val['values'][4];
+            $ooh_val = $val['values'][5];
+            $emergency_val = $val['values'][6];
+            */
+
             // conditionally determine if in range
+            /*
             switch(true) {
                 case in_array($number_of_properties, range($range_small,$range_big)): 
                     $current_range_small = round($range_explode[0]);
@@ -165,12 +237,37 @@ foreach($pricing_rates_obj as $pricing_rates) {
                     break;
 
             }
+            */
 
         }
 
     }
+    
+}
+
+
+
+/**
+ * Calculate the costs (monthly fee and set up fee)
+ * @author Archie M
+ * 
+ */
+
+// check to see if all product costs are not null and push to array
+// get values
+/*
+foreach ($pricing_rates_obj as $price) {
+
+    $max_value = $price['values'][7];
+    if( ( round($max_value) <= round($num_of_properties)) ) {
+        echo "test///////" . '<br>';
+        echo "max value " . $max_value;
+    }
 
 }
+*/
+
+
 
 
 
@@ -212,11 +309,30 @@ if( preg_grep('/^Emergency\s.*/', $selected_services) ) {
 
 
 
-/**
- * Calculate the costs (monthly fee and set up fee)
- * @author Archie M
- * 
- */
+/*
+
+if( ( round($num_of_properties) <= round($max_value)) ) {
+        
+    echo "Responsive ".$responsive_repairs_val = $val['values'][2] . '<br>';
+    echo "Tenant " . $tenant_app_val = $val['values'][3] . '<br>';
+    echo "Compliance " . $compliance_val = $val['values'][4] . '<br>';
+    echo "Ooh " . $ooh_val = $val['values'][5] . '<br>';
+    echo "Emergency " . $emergency_val = $val['values'][6] . '<br>';
+    
+    echo "Max value " . $max_value;
+
+    /*
+    $responsive_repairs_val = $val['values'][2];
+    $tenant_app_val = $val['values'][3];
+    $compliance_val = $val['values'][4];
+    $ooh_val = $val['values'][5];
+    $emergency_val = $val['values'][6];
+    *
+}
+*/
+
+// sum
+
 
  $set_up_fee = '';
  $monthly_fee = '';
