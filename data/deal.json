@@ -296,14 +296,14 @@
         "versions": [
           {
             "name": "power",
-            "value": "6000",
+            "value": "3000",
             "timestamp": 1575892687124,
             "sourceId": "archie.makuwa@struto.co.uk",
             "source": "CRM_UI",
             "sourceVid": []
           }
         ],
-        "value": "6000",
+        "value": "3000",
         "timestamp": 1575892687124,
         "source": "CRM_UI",
         "sourceId": "archie.makuwa@struto.co.uk"
